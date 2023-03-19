@@ -1,38 +1,43 @@
 public class Main {
-    public static int year() {
-        int year = 1854;
-        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
-            return 1;
-        }else {
-            return 0;
+    public static boolean isLeapYear( int year) {
+        return(year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
-    }
-    public static void run(String[] args) {
-        String osName = "iOS";
-        int clientOS = getClientOS(osName);
-    }
-    public static int getClientOS(String name) {
-        if (name.equals("iOS")) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
+
+
+
+        private static void printLink(int os, int year) {
+            if (os == 0) {
+                if (year >= 2015) {
+                    System.out.println("Установите версию приложения для iOS по ссылке");
+                } else {
+                    System.out.println("Установите облегченную версию приложения для iOS по ссылке");
+                }
+                } else {
+                    if (year >= 2015) {
+                        System.out.print("Установите версию приложения для Android по ссылке");
+                    } else {
+                        System.out.println("Установите облегченную версию приложения для Android по ссылке");
+                    }
+                }
+            }
+
      public static int distanse (){
         int distanse = 78;
         return distanse;
      }
- public static int calkulate (int distance) {
+ public static int calculateDeliveryDays (int distance) {
         if (distance < 20) {
             return 1;
         } else if (distance < 60) {
             return 2;
+        } else if (distance < 100){
+            return 3;
         } else {
             return -1;
         }
  }
  public static void printDays (int distance){
-        int deliveryDays = calkulate(distance);
+        int deliveryDays = calculateDeliveryDays(distance);
         if (deliveryDays < 0) {
             System.out.println("Доставки нет");
         } else {
@@ -50,7 +55,7 @@ public class Main {
     }
     public static void task1() {
         System.out.println("Задача 1");
-        if (year() > 0) {
+        if (isLeapYear(1856)) {
             System.out.println("Год высокосный");
         } else {
             System.out.println("Год невысокосный");
@@ -58,16 +63,11 @@ public class Main {
     }
     public static void task2() {
         System.out.println("Задача 2");
-        byte clientOS = 1;
-        if (clientOS == 0) {
-            System.out.println("Установите версию приложения для iOS по ссылке.");
-        } else {
-            System.out.println("Установите версию приложения для Android по ссылке.");
-        }
+        printLink(0,2014);
     }
     public static void task3() {
         System.out.println("Задача 3");
-        printDays(20);
+        printDays(101);
 
     }
 }
